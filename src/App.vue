@@ -1,13 +1,22 @@
 <template>
   <div>
-    йцуйцу
+    <MyHeader/>
   </div>
 </template>
 
-<script >
+<script>
+import MyHeader from './components/MyHeader.vue';
 export default {
-
+components: {
+  MyHeader
+}
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+</style>
