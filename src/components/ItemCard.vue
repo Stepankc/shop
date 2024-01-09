@@ -15,17 +15,11 @@ defineProps({
     post: Object,
     required: Boolean,
 })
-
-// props: {
-//         post: Object,
-//         required: Boolean,
-//     },
 </script>
 
 <style lang="scss" scoped>
 .card {
     margin: 15px;
-    /* border: 2px solid teal; */
     display: flex;
     flex-direction: column;
     align-items: center;

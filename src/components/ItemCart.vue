@@ -62,26 +62,4 @@ defineProps({
 
 
 }
-
-.counter-container {
-    display: flex;
-    align-items: center;
-
-    label {
-        margin-right: 10px;
-    }
-
-    select {
-        padding: 8px;
-        font-size: 14px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        outline: none;
-        cursor: pointer;
-
-        &:hover {
-            border-color: #aaa;
-        }
-    }
-}
 </style>
