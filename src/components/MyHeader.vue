@@ -1,9 +1,12 @@
 <template>
     <header>
         <div class="wrapper">
-            <div class="nav">
-                <div>Товары</div>
-            </div>
+            <nav class="menu">
+                <ul>
+                    <li>Создать товар</li>
+                    <li>Товары</li>
+                </ul>
+            </nav>
             <div class="logo">
                 <img src="../../public/logo.svg" alt="">
             </div>
@@ -15,20 +18,34 @@
     </header>
 </template>
 
-<script lang="ts">
+<script>
 export default {}
 </script>
 
 <style lang="scss" scoped>
 .wrapper {
     padding: 10px 20px;
-    display: flex;
+    display: grid;
     justify-content: space-between;
+    grid-template-columns: 20% auto 20%;
     align-items: center;
+}
+
+.menu * {
+    display: inline;
+}
+
+ul {
+    gap: 10px;
+}
+
+.menu li {
+    margin: 20px;
 }
 
 .cart {
     cursor: pointer;
+    justify-self: end;
 
     .cart-image {
         height: 30px;
