@@ -5,7 +5,7 @@
     </div>
     <div class="card-info">
       <h4 class="title">{{ item.title }}</h4>
-      <div>${{ item.body }}</div>
+      <div>{{ currency }}</div>
     </div>
   </div>
 </template>
@@ -13,11 +13,17 @@
 <script lang="ts">
 import { PropType } from "vue";
 import Product from "./Types";
+import { formatPrice } from "../utils/formatPrice";
 export default {
   props: {
     item: {
       type: Object as PropType<Product>,
       required: true,
+    },
+  },
+  computed: {
+    currency() {
+      return formatPrice(this.item.price);
     },
   },
 };
@@ -35,6 +41,7 @@ export default {
 
   .img {
     max-height: 300px;
+    max-width: 300px;
   }
 
   .card-info {
