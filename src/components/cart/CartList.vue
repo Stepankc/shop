@@ -1,17 +1,16 @@
 <template>
   <div class="container">
-    <item-card v-for="item in items" :key="item.id" :item="item" />
+    <item-cart v-for="item in items" :key="item.id" :item="item" />
   </div>
 </template>
 
 <script lang="ts">
-import ItemCard from "./ItemCard.vue";
+import ItemCart from "./ItemCart.vue";
 export default {
-  components: { ItemCard },
+  components: { ItemCart },
   props: {
     items: {
       type: Array,
-      required: true,
     },
   },
 };
@@ -20,7 +19,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   display: grid;
-  grid-template-columns: repeat(4, 18%);
+  grid-auto-flow: row;
   justify-content: center;
   gap: 20px;
 }
