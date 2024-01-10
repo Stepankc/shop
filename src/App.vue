@@ -11,7 +11,6 @@ import { defineComponent } from "vue";
 import MyHeader from "./components/MyHeader.vue";
 import ItemList from "./components/ItemList.vue";
 import MyDrawer from "./components/MyDrawer.vue";
-import { formatPrice } from "./utils/formatPrice";
 
 export default defineComponent({
   components: { MyHeader, ItemList, MyDrawer },
