@@ -19,6 +19,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
+  padding-top: 72px;
   display: grid;
   grid-template-columns: repeat(4, 18%);
   justify-content: center;
