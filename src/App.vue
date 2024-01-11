@@ -2,7 +2,7 @@
   <div>
     <MyHeader @toggle-drawer="toggleDrawer" />
     <item-list :items="items" />
-    <MyDrawer v-model:show="isDrawerOpen" />
+    <MyDrawer :isDrawerOpen="isDrawerOpen" @toggle-drawer="toggleDrawer" />
   </div>
 </template>
 
@@ -21,7 +21,7 @@ export default defineComponent({
     };
   },
   methods: {
-    toggleDrawer() {
+    toggleDrawer(): void {
       this.isDrawerOpen = !this.isDrawerOpen;
     },
   },

@@ -1,15 +1,15 @@
 <template>
   <div>
     <div style="text-align: right">
-      <button class="toggle" @click="handleDrawer">
+      <button class="toggle" @click="toggleDrawer">
         &#8942;&#8942;&#8942; Show Menu
       </button>
     </div>
-    <div class="right-drawer" :style="{ width: show ? '25vw' : '0' }">
+    <div class="right-drawer" :style="{ width: isDrawerOpen ? '25vw' : '0' }">
       <div class="wrapper">
         <div class="drawer-header">
           <div class="cart">Корзина</div>
-          <button class="close" @click="handleDrawer">&#9587;</button>
+          <button class="close" @click="toggleDrawer">&#9587;</button>
         </div>
         <div class="drawer-middle">
           <cart-list />
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <div class="drawer-mask" v-if="show" @click="handleDrawer"></div>
+    <div class="drawer-mask" v-if="isDrawerOpen" @click="toggleDrawer"></div>
   </div>
 </template>
   
@@ -41,13 +41,14 @@ export default {
   components: { ItemCart, CartList },
   name: "drawer",
   props: {
-    show: {
+    isDrawerOpen: {
       type: Boolean,
+      required: true,
     },
   },
   methods: {
-    handleDrawer(): void {
-      this.$emit("update:show", !this.show);
+    toggleDrawer(): void {
+      this.$emit("toggle-drawer");
     },
   },
 };
