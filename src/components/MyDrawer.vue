@@ -5,7 +5,7 @@
         &#8942;&#8942;&#8942; Show Menu
       </button>
     </div>
-    <div class="right-drawer" :style="{ width: isDrawerOpen ? '25vw' : '0' }">
+    <div class="right-drawer" :style="{ width: show ? '25vw' : '0' }">
       <div class="wrapper">
         <div class="drawer-header">
           <div class="cart">Корзина</div>
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <div class="drawer-mask" v-if="isDrawerOpen" @click="handleDrawer"></div>
+    <div class="drawer-mask" v-if="show" @click="handleDrawer"></div>
   </div>
 </template>
   
@@ -39,12 +39,15 @@ import ItemCart from "./cart/ItemCart.vue";
 
 export default {
   components: { ItemCart, CartList },
-  data() {
-    return { isDrawerOpen: true as Boolean };
+  name: "drawer",
+  props: {
+    show: {
+      type: Boolean,
+    },
   },
   methods: {
     handleDrawer(): void {
-      this.isDrawerOpen = !this.isDrawerOpen;
+      this.$emit("update:show", !this.show);
     },
   },
 };
@@ -86,7 +89,7 @@ export default {
     font-size: large;
   }
 
-  .drawer-middle{
+  .drawer-middle {
     flex-grow: 1;
   }
   .drawer-bottom {

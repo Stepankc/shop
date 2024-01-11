@@ -1,8 +1,8 @@
 <template>
   <div>
-    <MyHeader />
+    <MyHeader @toggle-drawer="toggleDrawer" />
     <item-list :items="items" />
-    <MyDrawer />
+    <MyDrawer v-model:show="isDrawerOpen" />
   </div>
 </template>
 
@@ -17,7 +17,13 @@ export default defineComponent({
   data() {
     return {
       items: [] as object[],
+      isDrawerOpen: false as Boolean,
     };
+  },
+  methods: {
+    toggleDrawer() {
+      this.isDrawerOpen = !this.isDrawerOpen;
+    },
   },
   mounted() {
     fetch(`https://fakestoreapi.com/products/`)

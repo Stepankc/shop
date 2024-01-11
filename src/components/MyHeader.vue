@@ -10,7 +10,7 @@
       <div class="logo">
         <img src="../../public/logo.svg" alt="" />
       </div>
-      <div class="cart">
+      <div class="cart" @click="toggleDrawer">
         <img src="../../public/cart-outline.svg" alt="" class="cart-image" />
         <div class="cart-badge">5</div>
       </div>
@@ -19,7 +19,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    toggleDrawer() {
+      this.$emit("toggle-drawer");
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
