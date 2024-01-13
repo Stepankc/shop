@@ -1,46 +1,42 @@
 <template>
-  <div>
+  <div class="app">
     <MyHeader @toggle-drawer="toggleDrawer" />
-    <item-list :items="items" />
+    <router-view></router-view>
     <MyDrawer :isDrawerOpen="isDrawerOpen" @toggle-drawer="toggleDrawer" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
 import MyHeader from "./components/MyHeader.vue";
-import ItemList from "./components/ItemList.vue";
 import MyDrawer from "./components/MyDrawer.vue";
-
-export default defineComponent({
-  components: { MyHeader, ItemList, MyDrawer },
+export default {
+  components: { MyHeader, MyDrawer },
   data() {
     return {
-      items: [] as object[],
       isDrawerOpen: false as Boolean,
     };
   },
   methods: {
     toggleDrawer(): void {
-      this.isDrawerOpen = !this.isDrawerOpen;
+      if (this.isDrawerOpen === true) {
+        this.isDrawerOpen = false;
+        document.getElementsByTagName("body")[0].style.overflow = "auto";
+      } else {
+        this.isDrawerOpen = true;
+        document.getElementsByTagName("body")[0].style.overflow = "hidden";
+      }
     },
   },
-  mounted() {
-    fetch(`https://fakestoreapi.com/products/`)
-      .then((res) => res.json())
-      .then((data) => {
-        this.items = data;
-      })
-      .catch((err) => console.log("Error", err));
-  },
-});
+};
 </script>
 
-<style lang="scss">
+<style>
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font: "Fira Sans", sans-serif;
+  text-decoration: none;
+  color: inherit;
 }
 </style>
