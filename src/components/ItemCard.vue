@@ -12,8 +12,8 @@
 
 <script lang="ts">
 import { PropType } from "vue";
-import Product from "./Types";
 import { formatPrice } from "../utils/formatPrice";
+import Product from "./Types";
 export default {
   props: {
     item: {
@@ -41,11 +41,12 @@ export default {
   border: 2px solid #e2e8f0;
   border-radius: 16px;
   padding: 8px;
-  transition: transform 0.3s ease; /* Анимация при наведении */
+  height: 100%;
+  transition: transform 0.3s ease;
 
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень при наведении */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .card-img {

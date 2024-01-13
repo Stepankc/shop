@@ -34,7 +34,6 @@ import ItemCart from "./cart/ItemCart.vue";
 
 export default {
   components: { ItemCart, CartList },
-  name: "drawer",
   props: {
     isDrawerOpen: {
       type: Boolean,

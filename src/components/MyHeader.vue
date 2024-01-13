@@ -4,7 +4,8 @@
       <nav class="menu">
         <ul>
           <li>Создать товар</li>
-          <li>Товары</li>
+
+          <li><router-link to="/">Товары</router-link></li>
         </ul>
       </nav>
       <div class="logo">
