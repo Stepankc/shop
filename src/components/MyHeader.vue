@@ -18,7 +18,7 @@
   </header>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 export default {
   methods: {
     toggleDrawer(): void {
@@ -30,8 +30,9 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  position: fixed;
-  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1;
   background-color: #fff;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
 }

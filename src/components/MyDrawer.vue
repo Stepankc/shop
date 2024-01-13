@@ -1,10 +1,5 @@
 <template>
   <div>
-    <div style="text-align: right">
-      <button class="toggle" @click="toggleDrawer">
-        &#8942;&#8942;&#8942; Show Menu
-      </button>
-    </div>
     <div class="right-drawer" :style="{ width: isDrawerOpen ? '25vw' : '0' }">
       <div class="wrapper">
         <div class="drawer-header">
@@ -92,6 +87,7 @@ export default {
 
   .drawer-middle {
     flex-grow: 1;
+    overflow-y: auto;
   }
   .drawer-bottom {
     .total-sum {
