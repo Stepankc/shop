@@ -1,6 +1,13 @@
 <template>
   <div class="container">
-    <item-card v-for="item in items" :key="item.id" :item="item" />
+    <router-link
+      v-for="item in items"
+      :key="item.id"
+      :to="{ name: 'ItemDetails', params: { id: item.id } }"
+    >
+      <!-- target="_blank" -->
+      <item-card :item="item" />
+    </router-link>
   </div>
 </template>
 
@@ -19,7 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  padding-top: 72px;
+  margin-top: 16px;
   display: grid;
   grid-template-columns: repeat(4, 18%);
   justify-content: center;
