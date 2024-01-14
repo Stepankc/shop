@@ -5,7 +5,12 @@
     </div>
     <div class="card-info">
       <h4 class="title">{{ item.title }}</h4>
-      <div>{{ currency }}</div>
+      <div class="price">
+        <div>{{ currency }}</div>
+        <button @click="$store.commit('addToCart', item)">
+          добавить в корзину
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -22,7 +27,7 @@ export default {
     },
   },
   computed: {
-    currency() {
+    currency(): string {
       return formatPrice(this.item.price);
     },
   },
@@ -66,6 +71,11 @@ export default {
     gap: 10px;
     font-size: large;
     color: rgb(13, 13, 13);
+
+    .price {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }
 </style>
