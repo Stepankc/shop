@@ -7,18 +7,20 @@
           <button class="close" @click="toggleDrawer">&#9587;</button>
         </div>
         <div class="drawer-middle">
-          <cart-list />
-          <item-cart />
+          <cart-list :items="$store.state.cart" />
         </div>
 
         <div class="drawer-bottom">
           <div class="total-sum">
             <span>Итого:</span>
             <div class="dash"></div>
-            <b>1200</b>
+            <b>{{ $store.getters.totalPrice }}</b>
           </div>
 
-          <button disabled="" class="confirm-buy">
+          <button
+            :disabled="$store.state.cart.length === 0"
+            class="confirm-buy"
+          >
             Перейти к оформлению заказа
           </button>
         </div>
@@ -27,13 +29,12 @@
     <div class="drawer-mask" v-if="isDrawerOpen" @click="toggleDrawer"></div>
   </div>
 </template>
-  
+
 <script lang="ts">
 import CartList from "./cart/CartList.vue";
-import ItemCart from "./cart/ItemCart.vue";
 
 export default {
-  components: { ItemCart, CartList },
+  components: { CartList },
   props: {
     isDrawerOpen: {
       type: Boolean,
@@ -47,7 +48,7 @@ export default {
   },
 };
 </script>
-  
+
 <style lang="scss" scoped>
 .close {
   background: white;
@@ -95,7 +96,7 @@ export default {
       gap: 5px;
 
       .dash {
-        border-bottom: 1px dotted rgb(127, 127, 127);
+        border-bottom: 1px dotted rgb(155, 155, 155);
         flex-grow: 1;
       }
     }
@@ -133,4 +134,3 @@ export default {
   transition: opacity 0.2s;
 }
 </style>
-  

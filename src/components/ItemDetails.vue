@@ -8,6 +8,11 @@
           Цена:
           <strong>{{ currency }}</strong>
         </div>
+        <button
+          @click="$store.commit('addToCart', product)"
+        >
+          добавить в корзину
+        </button>
       </div>
       <div class="decription">
         <h3>Описание:</h3>
@@ -19,9 +24,9 @@
 
 <script lang="ts">
 import { PropType } from "vue";
-import Product from "./Types";
 import { fetchProducts } from "../api";
 import { formatPrice } from "../utils/formatPrice";
+import Product from "./Types";
 
 export default {
   props: {
