@@ -9,6 +9,8 @@
 <script lang="ts">
 import MyHeader from "./components/MyHeader.vue";
 import MyDrawer from "./components/MyDrawer.vue";
+import "./global.scss"
+
 export default {
   components: { MyHeader, MyDrawer },
   data() {
