@@ -14,13 +14,9 @@ export default defineComponent({
   data() {
     return {
       items: [] as object[],
-      cart: [] as object[],
     };
   },
   methods: {
-    addToCart(item: object): void {
-      this.cart.value.push(item);
-    },
     fetchProducts(): void {
       fetchProducts().then((data) => {
         this.items = data;
