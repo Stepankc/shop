@@ -1,16 +1,17 @@
 <template>
   <div class="card">
-    <img
-      src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
-      alt=""
-      class="img"
-    />
+    <img :src="item.image" alt="" class="img" />
     <div class="card-title">
-      <p>post.</p>
+      <p>{{ item.title }}</p>
       <div class="card-info">
-        <b>$12</b>
+        <b>{{ price }}</b>
         <my-counter />
-        <img class="del-btn" src="../../../public/trash-light.svg" alt="" />
+        <img
+          class="del-btn"
+          @click="$store.commit('removeFromCart', item.id)"
+          src="../../../public/trash-light.svg"
+          alt=""
+        />
       </div>
     </div>
   </div>
@@ -20,6 +21,7 @@
 import MyCounter from "../UI/MyCounter.vue";
 import Product from "../Types";
 import { PropType } from "vue";
+import { formatPrice } from "../../utils/formatPrice";
 
 export default {
   components: { MyCounter },
@@ -27,6 +29,11 @@ export default {
     item: {
       type: Object as PropType<Product>,
       required: true,
+    },
+  },
+  computed: {
+    price(): string {
+      return formatPrice(this.$props.item.price);
     },
   },
 };
@@ -41,14 +48,16 @@ export default {
   align-items: stretch;
   width: 100%;
   gap: 15px;
+  padding: 10px;
+  align-items: center;
 
   .img {
-    width: 64px;
+    max-width: 64px;
+    max-height: 72px;
   }
 
   .card-title {
     display: flex;
-    padding: 10px;
     justify-content: space-between;
     gap: 15px;
     flex-grow: 1;
