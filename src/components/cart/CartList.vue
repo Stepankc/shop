@@ -11,6 +11,7 @@ export default {
   props: {
     items: {
       type: Array,
+      required: true,
     },
   },
 };
@@ -20,7 +21,6 @@ export default {
 .container {
   display: grid;
   grid-auto-flow: row;
-  justify-content: center;
   gap: 20px;
 }
 </style>
