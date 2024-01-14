@@ -13,7 +13,9 @@
       </div>
       <div class="cart" @click="toggleDrawer">
         <img src="../../public/cart-outline.svg" alt="" class="cart-image" />
-        <div class="cart-badge">5</div>
+        <div class="cart-badge" v-if="$store.state.cart.length > 0">
+          {{ $store.state.cart.length }}
+        </div>
       </div>
     </div>
   </header>
@@ -55,6 +57,12 @@ ul {
 
 .menu li {
   margin: 20px;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: var(--primary-color);
+  }
 }
 
 .cart {
