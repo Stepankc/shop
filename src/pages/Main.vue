@@ -1,32 +1,25 @@
 <template>
   <div>
-    <item-list :items="items" />
+    <item-list :items="$store.state.item" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { fetchProducts } from "../api/index";
+import { mapActions } from "vuex";
 import ItemList from "../components/ItemList.vue";
 
-export default defineComponent({
+export default {
   components: { ItemList },
   data() {
-    return {
-      items: [] as object[],
-    };
+    return {};
   },
   methods: {
-    fetchProducts(): void {
-      fetchProducts().then((data) => {
-        this.items = data;
-      });
-    },
+    ...mapActions(["fetchProducts"]),
   },
   mounted() {
     this.fetchProducts();
   },
-});
+};
 </script>
 
 <style lang="scss"></style>

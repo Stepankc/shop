@@ -8,9 +8,7 @@
           Цена:
           <strong>{{ currency }}</strong>
         </div>
-        <button
-          @click="$store.commit('addToCart', product)"
-        >
+        <button @click="$store.commit('addToCart', product)">
           добавить в корзину
         </button>
       </div>
@@ -24,7 +22,7 @@
 
 <script lang="ts">
 import { PropType } from "vue";
-import { fetchProducts } from "../api";
+import { mapGetters } from "vuex";
 import { formatPrice } from "../utils/formatPrice";
 import Product from "./Types";
 
@@ -45,13 +43,10 @@ export default {
       return formatPrice(this.product.price);
     },
   },
-  async mounted() {
-    try {
-      this.product = await fetchProducts(this.id);
-    } catch (error) {
-      console.error("Error fetching product details:", error);
-    }
+  methods: {
+    ...mapGetters(["getItemById"]),
   },
+  mounted() {},
 };
 </script>
 
