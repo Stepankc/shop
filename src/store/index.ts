@@ -1,14 +1,17 @@
 import { createStore } from "vuex";
 import Product from "../components/Types";
 import { formatPrice } from "../utils/formatPrice";
+import { fetchProducts } from "../api";
 
 interface RootState {
   cart: Product[];
+  item: Product[];
 }
 
 export default createStore({
   state: {
     cart: [],
+    item: [],
   },
   getters: {
     totalPrice: (state: RootState) =>
@@ -27,6 +30,18 @@ export default createStore({
       state.cart = state.cart.filter((item: Product) => item.id !== productId);
       console.log(state.cart);
     },
+    setItems(state: RootState, items: Product[]): void {
+      state.item = items;
+    },
   },
-  actions: {},
+  actions: {
+    async fetchProducts({ commit }): Promise<void> {
+      try {
+        const data = await fetchProducts();
+        commit("setItems", data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    },
+  },
 });
