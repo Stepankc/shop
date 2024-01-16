@@ -1,10 +1,9 @@
 import { createStore } from "vuex";
-import Product from "../components/Types";
 import { formatPrice } from "../utils/formatPrice";
 import { fetchProducts } from "../api";
 
 interface RootState {
-  cart: Product[];
+  cart: CartProduct[];
   item: Product[];
 }
 
@@ -15,12 +14,15 @@ export default createStore({
   },
   getters: {
     totalPrice: (state: RootState) =>
-      formatPrice(state.cart.reduce((acc, item) => acc + item.price, 0)),
+      formatPrice(
+        state.cart.reduce((acc, item) => acc + item.price * item.quantity, 0)
+      ),
   },
 
   mutations: {
-    addToCart(state: RootState, product: Product): void {
+    addToCart(state: RootState, product: CartProduct): void {
       if (!state.cart.some((item) => item.id === product.id)) {
+        product.quantity = 1;
         state.cart.push(product);
       } else {
         console.log("добавлен");

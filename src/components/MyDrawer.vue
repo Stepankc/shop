@@ -20,6 +20,7 @@
           <button
             :disabled="$store.state.cart.length === 0"
             class="confirm-buy"
+            @click="goToCart"
           >
             Перейти к оформлению заказа
           </button>
@@ -44,6 +45,10 @@ export default {
   methods: {
     toggleDrawer(): void {
       this.$emit("toggle-drawer");
+    },
+    goToCart(): void {
+      this.$router.push("cart");
+      this.toggleDrawer();
     },
   },
 };

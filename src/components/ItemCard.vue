@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @click="openProduct">
     <div class="card-img">
       <img :src="item.image" alt="" class="img" />
     </div>
@@ -7,7 +7,7 @@
       <h4 class="title">{{ item.title }}</h4>
       <div class="price">
         <div>{{ currency }}</div>
-        <button @click="$store.commit('addToCart', item)">
+        <button @click.stop="$store.commit('addToCart', item)">
           добавить в корзину
         </button>
       </div>
@@ -18,7 +18,6 @@
 <script lang="ts">
 import { PropType } from "vue";
 import { formatPrice } from "../utils/formatPrice";
-import Product from "./Types";
 export default {
   props: {
     item: {
@@ -29,6 +28,11 @@ export default {
   computed: {
     currency(): string {
       return formatPrice(this.item.price);
+    },
+  },
+  methods: {
+    openProduct() {
+      window.open("/item/" + this.item.id);
     },
   },
 };

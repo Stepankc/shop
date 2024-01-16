@@ -19,7 +19,6 @@
 
 <script lang="ts">
 import MyCounter from "../UI/MyCounter.vue";
-import Product from "../Types";
 import { PropType } from "vue";
 import { formatPrice } from "../../utils/formatPrice";
 

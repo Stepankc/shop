@@ -1,13 +1,7 @@
 <template>
   <div class="container">
-    <router-link
-      v-for="item in items"
-      :key="item.id"
-      :to="{ name: 'ItemDetails', params: { id: item.id } }"
-    >
-      <!-- target="_blank" -->
-      <item-card :item="item" />
-    </router-link>
+    <!-- target="_blank" -->
+    <item-card v-for="item in items" :key="item.id" :item="item" />
   </div>
 </template>
 

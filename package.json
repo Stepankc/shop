@@ -8,6 +8,8 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "v-calendar": "^3.1.2",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5",
     "vuex": "^4.0.0"

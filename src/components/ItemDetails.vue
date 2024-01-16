@@ -24,7 +24,6 @@
 import { PropType } from "vue";
 import { mapGetters } from "vuex";
 import { formatPrice } from "../utils/formatPrice";
-import Product from "./Types";
 
 export default {
   props: {
