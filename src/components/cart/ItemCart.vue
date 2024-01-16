@@ -5,7 +5,7 @@
       <p>{{ item.title }}</p>
       <div class="card-info">
         <b>{{ price }}</b>
-        <my-counter />
+        <my-counter :id="item.id" />
         <img
           class="del-btn"
           @click="$store.commit('removeFromCart', item.id)"

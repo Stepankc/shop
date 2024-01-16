@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <!-- target="_blank" -->
     <item-card v-for="item in items" :key="item.id" :item="item" />
   </div>
 </template>

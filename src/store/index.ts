@@ -24,16 +24,25 @@ export default createStore({
       if (!state.cart.some((item) => item.id === product.id)) {
         product.quantity = 1;
         state.cart.push(product);
-      } else {
-        console.log("добавлен");
       }
     },
     removeFromCart(state: RootState, productId: number): void {
       state.cart = state.cart.filter((item: Product) => item.id !== productId);
-      console.log(state.cart);
     },
     setItems(state: RootState, items: Product[]): void {
       state.item = items;
+    },
+    updateQuantity(
+      state: RootState,
+      payload: { id: number; value: number }
+    ): void {
+      const foundProduct = state.cart.find(
+        (element) => element.id === payload.id
+      );
+
+      if (foundProduct) {
+        foundProduct.quantity = payload.value;
+      }
     },
   },
   actions: {

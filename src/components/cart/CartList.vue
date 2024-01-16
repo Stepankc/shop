@@ -5,12 +5,13 @@
 </template>
 
 <script lang="ts">
+import { PropType } from "vue";
 import ItemCart from "./ItemCart.vue";
 export default {
   components: { ItemCart },
   props: {
     items: {
-      type: Array,
+      type: Array as PropType<Array<CartProduct>>,
       required: true,
     },
   },

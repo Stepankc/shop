@@ -114,6 +114,8 @@ export default {
       background-color: #84cc16;
       color: white;
       cursor: pointer;
+      overflow: hidden;
+      white-space: nowrap;
       &:hover {
         background-color: #65a30d;
       }

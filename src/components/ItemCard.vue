@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @click="openProduct">
+  <div class="card" @click="$router.push('/item/' + item.id)">
     <div class="card-img">
       <img :src="item.image" alt="" class="img" />
     </div>
@@ -28,11 +28,6 @@ export default {
   computed: {
     currency(): string {
       return formatPrice(this.item.price);
-    },
-  },
-  methods: {
-    openProduct() {
-      window.open("/item/" + this.item.id);
     },
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="counter-container">
     <label for="quantity">Количество:</label>
-    <select id="quantity" v-model="count">
+    <select id="quantity" v-model="count" @change="updateQuantity">
       <option
         v-for="quantity in quantityOptions"
         :key="quantity"
@@ -15,15 +15,33 @@
 
 <script lang="ts">
 export default {
+  props: {
+    id: {
+      type: Number,
+      required: true,
+    },
+  },
   data() {
     const quantityOptions: number[] = Array.from(
       { length: 10 },
       (_, index) => index + 1
     );
+    const count =
+      this.$store.state.cart.find((product: CartProduct) => product.id === this.$props.id)
+        ?.quantity || 1;
+
     return {
-      count: 1 as number,
+      count: count as number,
       quantityOptions,
     };
+  },
+  methods: {
+    updateQuantity(): void {
+      this.$store.commit("updateQuantity", {
+        id: this.$props.id,
+        value: this.count,
+      });
+    },
   },
 };
 </script>

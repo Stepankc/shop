@@ -9,6 +9,7 @@
 <script lang="ts">
 import MyHeader from "./components/MyHeader.vue";
 import MyDrawer from "./components/MyDrawer.vue";
+import "v-calendar/dist/style.css";
 import "./global.scss"
 
 export default {
@@ -37,7 +38,6 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font: "Fira Sans", sans-serif;
   text-decoration: none;
   color: inherit;
 }
