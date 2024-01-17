@@ -21,17 +21,9 @@
 </template>
 
 <script lang="ts">
-import { PropType } from "vue";
-import { mapGetters } from "vuex";
 import { formatPrice } from "../utils/formatPrice";
 
 export default {
-  props: {
-    id: {
-      type: String as PropType<string>,
-      required: true,
-    },
-  },
   data() {
     return {
       product: {} as Product,
@@ -43,9 +35,16 @@ export default {
     },
   },
   methods: {
-    ...mapGetters(["getItemById"]),
+    setProduct() {
+      const id = this.$route.params.id as string;
+      const numericId = parseInt(id);
+
+      this.product = this.$store.getters.getItemById(numericId);
+    },
   },
-  mounted() {},
+  mounted() {
+    this.setProduct();
+  },
 };
 </script>
 

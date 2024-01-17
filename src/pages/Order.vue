@@ -47,7 +47,7 @@
 
 <script lang="ts">
 import ItemCart from "../components/cart/ItemCart.vue";
-import { DatePicker, Calendar } from "v-calendar";
+import { DatePicker } from "v-calendar";
 
 export default {
   data() {
@@ -67,7 +67,7 @@ export default {
       console.log(this.deliveryDate);
     },
   },
-  components: { ItemCart, DatePicker, Calendar },
+  components: { ItemCart, DatePicker },
 };
 </script>
 

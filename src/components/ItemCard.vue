@@ -1,5 +1,8 @@
 <template>
-  <div class="card" @click="$router.push('/item/' + item.id)">
+  <div
+    class="card"
+    @click="$router.push({ name: 'ItemDetails', params: { id: item.id } })"
+  >
     <div class="card-img">
       <img :src="item.image" alt="" class="img" />
     </div>

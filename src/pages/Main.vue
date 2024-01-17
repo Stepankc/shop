@@ -8,9 +8,10 @@
 </template>
 
 <script lang="ts">
-import { mapActions } from "vuex";
 import Loader from "../components/UI/Loader.vue";
 import ItemList from "../components/ItemList.vue";
+import { fetchProducts } from "../api";
+import { mapMutations } from "vuex";
 
 export default {
   data() {
@@ -19,13 +20,18 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["fetchProducts"]),
+    ...mapMutations(["setItems"]),
+
+    fetchProducts(): void {
+      fetchProducts().then((data) => {
+        this.setItems(data);
+      });
+    },
   },
   async mounted() {
     this.isLoading = true;
     try {
-      await this.fetchProducts();
-    } catch (error) {
+      this.fetchProducts();
     } finally {
       this.isLoading = false;
     }

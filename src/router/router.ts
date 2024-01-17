@@ -4,11 +4,12 @@ import ItemDetails from "../components/ItemDetails.vue";
 import Order from "../pages/Order.vue";
 
 const routes: Array<RouteRecordRaw> = [
-  { path: "/", component: Main, Order },
+  { path: "/", component: Main },
   {
     path: "/item/:id",
     name: "ItemDetails",
     component: ItemDetails,
+    props: true,
   },
   {
     path: "/cart",

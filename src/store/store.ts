@@ -1,6 +1,5 @@
 import { createStore } from "vuex";
 import { formatPrice } from "../utils/formatPrice";
-import { fetchProducts } from "../api";
 
 interface RootState {
   cart: CartProduct[];
@@ -17,6 +16,14 @@ export default createStore({
       formatPrice(
         state.cart.reduce((acc, item) => acc + item.price * item.quantity, 0)
       ),
+    getItemById:
+      (state: RootState) =>
+      (itemId: number): Product | undefined => {
+        const foundProduct = state.item.find(
+          (element) => element.id === itemId
+        );
+        return foundProduct;
+      },
   },
 
   mutations: {
@@ -45,14 +52,5 @@ export default createStore({
       }
     },
   },
-  actions: {
-    async fetchProducts({ commit }): Promise<void> {
-      try {
-        const data = await fetchProducts();
-        commit("setItems", data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    },
-  },
+  actions: {},
 });

@@ -27,8 +27,9 @@ export default {
       (_, index) => index + 1
     );
     const count =
-      this.$store.state.cart.find((product: CartProduct) => product.id === this.$props.id)
-        ?.quantity || 1;
+      this.$store.state.cart.find(
+        (product: CartProduct) => product.id === this.$props.id
+      )?.quantity || 1;
 
     return {
       count: count as number,
