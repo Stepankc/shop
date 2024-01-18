@@ -10,8 +10,8 @@
       <h4 class="title">{{ item.title }}</h4>
       <div class="price">
         <div>{{ currency }}</div>
-        <button @click.stop="$store.commit('addToCart', item)">
-          добавить в корзину
+        <button @click.stop="addToCart" :disabled="isInCart">
+          {{ isInCart ? "Товар в корзине" : "Добавить в корзину" }}
         </button>
       </div>
     </div>
@@ -21,6 +21,7 @@
 <script lang="ts">
 import { PropType } from "vue";
 import { formatPrice } from "../utils/formatPrice";
+
 export default {
   props: {
     item: {
@@ -31,6 +32,18 @@ export default {
   computed: {
     currency(): string {
       return formatPrice(this.item.price);
+    },
+    isInCart(): boolean {
+      return this.$store.state.cart.some(
+        (cartItem: CartProduct) => cartItem.id === this.item.id
+      );
+    },
+  },
+  methods: {
+    addToCart(): void {
+      if (!this.isInCart) {
+        this.$store.commit("addToCart", this.item);
+      }
     },
   },
 };

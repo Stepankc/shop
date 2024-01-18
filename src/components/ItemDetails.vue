@@ -8,8 +8,11 @@
           Цена:
           <strong>{{ currency }}</strong>
         </div>
-        <button @click="$store.commit('addToCart', product)">
-          добавить в корзину
+        <button
+          @click="$store.commit('addToCart', product)"
+          :disabled="isInCart"
+        >
+          {{ isInCart ? "Товар в корзине" : "Добавить в корзину" }}
         </button>
       </div>
       <div class="decription">
@@ -32,6 +35,11 @@ export default {
   computed: {
     currency() {
       return formatPrice(this.product.price);
+    },
+    isInCart(): boolean {
+      return this.$store.state.cart.some(
+        (cartItem: CartProduct) => cartItem.id === this.product.id
+      );
     },
   },
   methods: {
