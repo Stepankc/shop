@@ -1,25 +1,22 @@
 <template>
   <div class="app">
-    <MyHeader @toggle-drawer="toggleDrawer" @show-dialog="showDialog" />
+    <MyHeader @toggle-drawer="toggleDrawer" />
     <router-view></router-view>
     <MyDrawer :isDrawerOpen="isDrawerOpen" @toggle-drawer="toggleDrawer" />
-    <Modal v-model:show="dialogVisible" />
   </div>
 </template>
 
 <script lang="ts">
 import MyHeader from "./components/MyHeader.vue";
 import MyDrawer from "./components/MyDrawer.vue";
-import Modal from "./components/UI/Modal.vue";
 import "v-calendar/dist/style.css";
 import "./global.scss";
 
 export default {
-  components: { MyHeader, MyDrawer, Modal },
+  components: { MyHeader, MyDrawer },
   data() {
     return {
       isDrawerOpen: false as Boolean,
-      dialogVisible: false as Boolean,
     };
   },
   methods: {
@@ -29,15 +26,6 @@ export default {
         document.getElementsByTagName("body")[0].style.overflow = "auto";
       } else {
         this.isDrawerOpen = true;
-        document.getElementsByTagName("body")[0].style.overflow = "hidden";
-      }
-    },
-    showDialog(): void {
-      if (this.dialogVisible === true) {
-        this.dialogVisible = false;
-        document.getElementsByTagName("body")[0].style.overflow = "auto";
-      } else {
-        this.dialogVisible = true;
         document.getElementsByTagName("body")[0].style.overflow = "hidden";
       }
     },

@@ -1,4 +1,4 @@
-export const fetchProducts = async (id?: string) => {
+export const fetchProducts = async (id?: number) => {
   try {
     let url = "https://fakestoreapi.com/products/";
 
