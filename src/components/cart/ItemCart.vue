@@ -6,11 +6,9 @@
       <div class="card-info">
         <b>{{ price }}</b>
         <my-counter :id="item.id" />
-        <img
+        <Trash
           class="del-btn"
           @click="$store.commit('removeFromCart', item.id)"
-          src="../../../public/trash-light.svg"
-          alt=""
         />
       </div>
     </div>
@@ -21,9 +19,10 @@
 import MyCounter from "../UI/MyCounter.vue";
 import { PropType } from "vue";
 import { formatPrice } from "../../utils/formatPrice";
+import Trash from "../../assets/Trash.vue";
 
 export default {
-  components: { MyCounter },
+  components: { MyCounter, Trash },
   props: {
     item: {
       type: Object as PropType<Product>,
@@ -68,7 +67,6 @@ export default {
       align-items: center;
 
       .del-btn {
-        width: 20px;
         opacity: 50%;
         cursor: pointer;
       }

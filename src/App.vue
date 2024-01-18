@@ -22,6 +22,7 @@ import Modal from "./components/UI/Modal.vue";
 import CreateItem from "./components/CreateItem.vue";
 import "v-calendar/dist/style.css";
 import "./global.scss";
+import { createProduct } from "./api/api";
 
 export default {
   components: { MyHeader, MyDrawer, Modal, CreateItem },
@@ -55,7 +56,11 @@ export default {
       }
     },
     createProduct(): void {
-      console.log(this.product);
+      createProduct(this.product).then((data) => {
+        const productWithId = { ...this.product, id: data.id };
+
+        this.$store.state.item.push(productWithId);
+      });
       this.dialogVisible = false;
       this.styleOverflow("auto");
     },

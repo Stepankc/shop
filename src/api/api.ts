@@ -22,15 +22,11 @@ export const fetchProducts = async (id?: number) => {
 };
 
 export const createProduct = async (product: Product) => {
-  try {
-    const response = await fetch("https://fakestoreapi.com/products", {
-      method: "POST",
-      body: JSON.stringify(product),
-    });
+  const response = await fetch("https://fakestoreapi.com/products", {
+    method: "POST",
+    body: JSON.stringify(product),
+  });
 
-    const json = await response.json();
-    console.log(json);
-  } catch (error) {
-    console.error("Error creating product:", error);
-  }
+  const data = await response.json();
+  return data;
 };

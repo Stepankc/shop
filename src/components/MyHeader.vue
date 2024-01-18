@@ -9,10 +9,10 @@
         </ul>
       </nav>
       <div class="logo">
-        <img src="../../public/logo.svg" alt="" />
+        <Logo />
       </div>
       <div class="cart" @click="toggleDrawer">
-        <img src="../../public/cart-outline.svg" alt="" class="cart-image" />
+        <CartImg class="cart-image" />
         <div class="cart-badge" v-if="$store.state.cart.length > 0">
           {{ $store.state.cart.length }}
         </div>
@@ -22,6 +22,8 @@
 </template>
 
 <script lang="ts">
+import Logo from "../assets/Logo.vue";
+import CartImg from "../assets/CartImg.vue";
 export default {
   methods: {
     toggleDrawer(): void {
@@ -31,6 +33,7 @@ export default {
       this.$emit("show-dialog");
     },
   },
+  components: { Logo, CartImg },
 };
 </script>
 
@@ -71,10 +74,6 @@ ul {
 .cart {
   cursor: pointer;
   justify-self: end;
-
-  .cart-image {
-    height: 30px;
-  }
 
   .cart-badge {
     position: absolute;

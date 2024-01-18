@@ -16,6 +16,7 @@
       v-model="product.price"
       type="number"
       class="input"
+      min="0"
       placeholder="цена"
     />
     <input

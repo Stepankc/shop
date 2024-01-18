@@ -47,7 +47,7 @@ export default {
       this.$emit("toggle-drawer");
     },
     goToCart(): void {
-      this.$router.push({name: 'Order'});
+      this.$router.push({ name: "Order" });
       this.toggleDrawer();
     },
   },

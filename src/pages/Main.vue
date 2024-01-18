@@ -10,7 +10,7 @@
 <script lang="ts">
 import Loader from "../components/UI/Loader.vue";
 import ItemList from "../components/ItemList.vue";
-import { fetchProducts } from "../api";
+import { fetchProducts } from "../api/api";
 import { mapMutations } from "vuex";
 
 export default {
