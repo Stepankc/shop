@@ -10,7 +10,10 @@
       <h4 class="title">{{ item.title }}</h4>
       <div class="price">
         <div>{{ currency }}</div>
-        <button @click.stop="addToCart" :disabled="isInCart">
+        <button
+          @click.stop="$store.commit('addToCart', item)"
+          :disabled="isInCart"
+        >
           {{ isInCart ? "Товар в корзине" : "Добавить в корзину" }}
         </button>
       </div>
@@ -37,13 +40,6 @@ export default {
       return this.$store.state.cart.some(
         (cartItem: CartProduct) => cartItem.id === this.item.id
       );
-    },
-  },
-  methods: {
-    addToCart(): void {
-      if (!this.isInCart) {
-        this.$store.commit("addToCart", this.item);
-      }
     },
   },
 };
