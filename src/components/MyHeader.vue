@@ -3,7 +3,7 @@
     <div class="wrapper">
       <nav class="menu">
         <ul>
-          <li>Создать товар</li>
+          <li @click="showDialog">Создать товар</li>
 
           <li><router-link to="/">Товары</router-link></li>
         </ul>
@@ -26,6 +26,9 @@ export default {
   methods: {
     toggleDrawer(): void {
       this.$emit("toggle-drawer");
+    },
+    showDialog(): void {
+      this.$emit("show-dialog");
     },
   },
 };

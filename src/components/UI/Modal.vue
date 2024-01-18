@@ -1,20 +1,25 @@
 <template>
-  <div class="dialog" v-if="show" @click.stop="hideDialog">
-    <div @click.stop class="dialog-content">
-      <form @submit.prevent>
-        <h4>Создать товар</h4>
-        <input type="text" placeholder="Название" />
-        <input type="text" placeholder="Описание" />
-        <input type="number" placeholder="Цена" />
-        <input type="text" placeholder="Категория" />
-        <button>Создать</button>
-      </form>
+  <transition name="modal-fade">
+    <div v-if="show" class="modal-overlay" @click.stop="closeModal">
+      <div class="modal-container" @click.stop>
+        <div class="modal-header">
+          <slot name="header"></slot>
+        </div>
+        <div class="modal-body">
+          <slot></slot>
+        </div>
+        <div class="modal-footer">
+          <slot name="footer"></slot>
+        </div>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   props: {
     show: {
       type: Boolean,
@@ -22,32 +27,66 @@ export default {
     },
   },
   methods: {
-    hideDialog() {
+    closeModal() {
+      document.getElementsByTagName("body")[0].style.overflow = "auto";
       this.$emit("update:show", false);
     },
   },
-  mounted() {},
-};
+});
 </script>
 
-<style lang="scss" scoped>
-.dialog {
+<style scoped lang="scss">
+.modal-overlay {
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  position: fixed;
   display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 3;
 
-  .dialog-content {
-    margin: auto;
+  .modal-container {
     background: white;
-    border-radius: 12px;
-    min-height: 50px;
-    min-width: 300px;
     padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    z-index: 1;
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .modal-body {
+      margin-bottom: 10px;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .close-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: #333;
+    }
   }
+}
+
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.5s;
+}
+.modal-fade-enter,
+.modal-fade-leave-to {
+  opacity: 0;
 }
 </style>
