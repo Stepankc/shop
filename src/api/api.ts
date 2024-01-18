@@ -20,13 +20,3 @@ export const fetchProducts = async (id?: number) => {
     throw error;
   }
 };
-
-export const createProduct = async (product: Product) => {
-  const response = await fetch("https://fakestoreapi.com/products", {
-    method: "POST",
-    body: JSON.stringify(product),
-  });
-
-  const data = await response.json();
-  return data;
-};

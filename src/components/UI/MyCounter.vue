@@ -21,18 +21,29 @@ export default {
       required: true,
     },
   },
+  computed: {
+    count: {
+      get(): number {
+        return (
+          this.$store.state.cart.find(
+            (product: CartProduct) => product.id === this.$props.id
+          )?.quantity || 1
+        );
+      },
+      set(value: number) {
+        this.$store.commit("updateQuantity", {
+          id: this.$props.id,
+          value: value,
+        });
+      },
+    },
+  },
   data() {
     const quantityOptions: number[] = Array.from(
       { length: 10 },
       (_, index) => index + 1
     );
-    const count =
-      this.$store.state.cart.find(
-        (product: CartProduct) => product.id === this.$props.id
-      )?.quantity || 1;
-
     return {
-      count: count as number,
       quantityOptions,
     };
   },

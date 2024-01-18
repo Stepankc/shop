@@ -39,6 +39,9 @@ export default createStore({
     setItems(state: RootState, items: Product[]): void {
       state.item = items;
     },
+    setItem(state: RootState, item: Product): void {
+      state.item.push(item);
+    },
     updateQuantity(
       state: RootState,
       payload: { id: number; value: number }

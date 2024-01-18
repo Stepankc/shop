@@ -38,6 +38,7 @@ export default {
   data() {
     return {
       product: {
+        id: (this.$store.state.item.length + 1) as number,
         title: "" as string,
         description: "" as string,
         price: 0 as number,

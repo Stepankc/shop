@@ -31,7 +31,9 @@ export default {
   async mounted() {
     this.isLoading = true;
     try {
-      this.fetchProducts();
+      if (this.$store.state.item.length === 0) {
+        this.fetchProducts();
+      }
     } finally {
       this.isLoading = false;
     }

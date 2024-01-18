@@ -16,13 +16,13 @@
 </template>
 
 <script lang="ts">
+import { mapMutations } from "vuex";
 import MyHeader from "./components/MyHeader.vue";
 import MyDrawer from "./components/MyDrawer.vue";
 import Modal from "./components/UI/Modal.vue";
 import CreateItem from "./components/CreateItem.vue";
 import "v-calendar/dist/style.css";
 import "./global.scss";
-import { createProduct } from "./api/api";
 
 export default {
   components: { MyHeader, MyDrawer, Modal, CreateItem },
@@ -34,6 +34,7 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(["setItem"]),
     styleOverflow(style: string) {
       document.getElementsByTagName("body")[0].style.overflow = style;
     },
@@ -56,11 +57,7 @@ export default {
       }
     },
     createProduct(): void {
-      createProduct(this.product).then((data) => {
-        const productWithId = { ...this.product, id: data.id };
-
-        this.$store.state.item.push(productWithId);
-      });
+      this.setItem(this.product);
       this.dialogVisible = false;
       this.styleOverflow("auto");
     },
