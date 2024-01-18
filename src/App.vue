@@ -6,7 +6,7 @@
     <Modal v-model:show="dialogVisible">
       <template #header> Создание товара </template>
       <div class="create-product">
-        <CreateItem @create="createProduct" />
+        <CreateItem v-model="product" />
       </div>
       <template #footer>
         <button @click="createProduct">Создать товар</button>
@@ -29,6 +29,7 @@ export default {
     return {
       isDrawerOpen: false as Boolean,
       dialogVisible: false as Boolean,
+      product: {} as Product,
     };
   },
   methods: {
@@ -53,9 +54,8 @@ export default {
         this.styleOverflow("hidden");
       }
     },
-    createProduct(product: Product): void {
-      console.log(product);
-
+    createProduct(): void {
+      console.log(this.product);
       this.dialogVisible = false;
       this.styleOverflow("auto");
     },

@@ -25,12 +25,15 @@
       placeholder="картинка"
     />
   </form>
-  <button @click="createProduct">Создать товар</button>
 </template>
 
 <script lang="ts">
+import { PropType } from "vue";
 export default {
-  emits: ["create"],
+  props: {
+    modelValue: Object as PropType<Product>,
+  },
+  emits: ["update:modelValue"],
   data() {
     return {
       product: {
@@ -41,11 +44,12 @@ export default {
       } as Product,
     };
   },
-  methods: {
-    createProduct() {
-      console.log(this.product);
-
-      this.$emit("create", this.product);
+  watch: {
+    product: {
+      handler(newVal) {
+        this.$emit("update:modelValue", newVal);
+      },
+      deep: true,
     },
   },
 };
