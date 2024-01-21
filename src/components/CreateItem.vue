@@ -6,11 +6,11 @@
       class="input"
       placeholder="название"
     />
-    <input
+    <textarea
       v-model="product.description"
-      type="text"
       class="input"
       placeholder="описание"
+      rows="3"
     />
     <input
       v-model="product.price"
@@ -58,13 +58,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-input {
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+input,
+textarea {
   border-radius: 12px;
   color: #1d1d1f;
   letter-spacing: 0;
   border: 1px solid #00000026;
   width: 100%;
-  height: 48px;
   padding: 16px;
   font-size: 16px;
   font-weight: 400;
@@ -75,5 +80,12 @@ input {
     outline: 1px solid;
     outline-color: var(--primary-color);
   }
+}
+textarea {
+  resize: vertical;
+  max-width: 100%;
+  height: auto;
+  min-height: 64px;
+  max-height: 250px;
 }
 </style>

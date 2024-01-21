@@ -14,3 +14,10 @@ interface Product {
 interface CartProduct extends Product {
   quantity: number;
 }
+
+interface Delivery {
+  product: Product[];
+  price: number;
+  adress: string;
+  date: string | undefined;
+}

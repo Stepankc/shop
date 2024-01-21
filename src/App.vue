@@ -4,12 +4,15 @@
     <router-view></router-view>
     <MyDrawer :isDrawerOpen="isDrawerOpen" @toggle-drawer="toggleDrawer" />
     <Modal v-model:show="dialogVisible">
-      <template #header> <h1>Создание товара</h1> </template>
+      <template #header>
+        <h1 class="title">Создание товара</h1>
+        <button class="close" @click="showDialog">&#9587;</button>
+      </template>
       <div class="create-product">
         <CreateItem v-model="product" />
       </div>
       <template #footer>
-        <button @click="createProduct">Создать товар</button>
+        <button class="create-btn" @click="createProduct">Создать товар</button>
       </template>
     </Modal>
   </div>
@@ -65,14 +68,35 @@ export default {
 };
 </script>
 
-<style lang="scss">
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  color: inherit;
+<style lang="scss" scoped>
+.title {
+  font-size: 20px;
+  font-weight: 600;
 }
 
+.close {
+  background: white;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+}
 
+.create-btn {
+  background: var(--primary-color);
+  border-radius: 12px;
+  color: #fff;
+  letter-spacing: 0;
+  border: none;
+  width: 100%;
+  height: 48px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  cursor: pointer;
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
+  }
+}
 </style>

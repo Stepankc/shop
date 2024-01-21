@@ -15,7 +15,11 @@
     <div class="order">
       <div class="order-card">
         <h1>Оформление заказа</h1>
-        <input type="text" placeholder="Адрес доставки" />
+        <input
+          v-model="deliveryAddress"
+          type="text"
+          placeholder="Адрес доставки"
+        />
         <DatePicker
           v-model="deliveryDate"
           :locale="'ru-RU'"
@@ -52,6 +56,7 @@ import { DatePicker } from "v-calendar";
 export default {
   data() {
     return {
+      deliveryAddress: "",
       deliveryDate: null as null | Date,
       masks: {
         input: "DD.MM.YYYY",
@@ -64,7 +69,13 @@ export default {
   },
   methods: {
     makeOrder(): void {
-      console.log(this.deliveryDate);
+      const deliveryProduct: Delivery = {
+        product: this.$store.state.cart,
+        price: this.$store.getters.totalPrice,
+        adress: this.deliveryAddress,
+        date: this.deliveryDate?.toISOString(),
+      };
+      console.log(deliveryProduct);
     },
   },
   components: { ItemCart, DatePicker },

@@ -36,6 +36,41 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+.order {
+  position: relative;
+  height: 100%;
+  > .order-card {
+    position: sticky;
+    top: 80px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    box-shadow: 0 0.125rem 1rem #00000025;
+    padding: 16px;
+    border-radius: 12px;
+
+    & button {
+      background: var(--primary-color);
+      border-radius: 12px;
+      color: #fff;
+      letter-spacing: 0;
+      border: none;
+      width: 100%;
+      height: 48px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.25;
+      cursor: pointer;
+      opacity: 0.9;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -50,7 +85,7 @@ export default defineComponent({
 
   .modal-container {
     background: white;
-    width: 400px;
+    width: 500px;
     z-index: 1;
     display: flex;
     flex-direction: column;

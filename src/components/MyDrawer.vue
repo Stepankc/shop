@@ -18,6 +18,7 @@
           </div>
 
           <button
+            class="confirm-btn"
             :disabled="$store.state.cart.length === 0"
             @click="goToCart"
           >
@@ -58,6 +59,7 @@ export default {
   background: white;
   border: 0;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .right-drawer {
@@ -140,7 +142,7 @@ export default {
   transition: opacity 0.2s;
 }
 
-button {
+.confirm-btn {
   background: var(--primary-color);
   border: 1px solid var(--primary-color);
   border-radius: 12px;
