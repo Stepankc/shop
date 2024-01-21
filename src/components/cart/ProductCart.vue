@@ -1,11 +1,13 @@
 <template>
   <div class="card">
-    <img :src="item.image" alt="" class="img" />
-    <div class="card-title">
-      <p>{{ item.title }}</p>
-      <div class="card-info">
-        <b>{{ price }}</b>
-        <my-counter :id="item.id" />
+    <div class="card-img">
+      <img :src="item.image" alt="" class="img" />
+    </div>
+    <div class="card-info">
+      <p class="title" :title="item.title">{{ item.title }}</p>
+      <div class="price">
+        <b class="">{{ price }}</b>
+        <my-counter :id="item.id" class="counter" />
         <Trash
           class="del-btn"
           @click="$store.commit('removeFromCart', item.id)"
@@ -49,24 +51,45 @@ export default {
   padding: 10px;
   align-items: center;
 
+  .card-img {
+    width: 72px;
+    height: 72px;
+    overflow: hidden;
+  }
   .img {
-    max-width: 64px;
-    max-height: 72px;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .title {
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 30ch;
+    color: #18181baa;
   }
 
-  .card-title {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
+  .card-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
     flex-grow: 1;
     flex-direction: column;
 
-    .card-info {
-      display: flex;
-      justify-content: space-between;
+    .price {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       align-items: center;
+      justify-items: start;
 
+      .counter {
+        justify-self: center;
+      }
       .del-btn {
+        justify-self: end;
         opacity: 50%;
         cursor: pointer;
       }

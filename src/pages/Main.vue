@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import Loader from "../components/UI/Loader.vue";
-import ItemList from "../components/ItemList.vue";
+import ItemList from "../components/ProductList.vue";
 import { fetchProducts } from "../api/api";
 import { mapMutations } from "vuex";
 

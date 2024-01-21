@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Main from "../pages/Main.vue";
-import ItemDetails from "../components/ItemDetails.vue";
+import ItemDetails from "../components/ProductDetails.vue";
 import Order from "../pages/Order.vue";
 
 const routes: Array<RouteRecordRaw> = [

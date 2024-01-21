@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts">
-import ItemCart from "../components/cart/ItemCart.vue";
+import ItemCart from "../components/cart/ProductCart.vue";
 import { DatePicker } from "v-calendar";
 
 export default {

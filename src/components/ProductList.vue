@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import ItemCard from "./ItemCard.vue";
+import ItemCard from "./ProductCard.vue";
 export default {
   components: { ItemCard },
   props: {

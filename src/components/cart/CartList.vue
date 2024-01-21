@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { PropType } from "vue";
-import ItemCart from "./ItemCart.vue";
+import ItemCart from "./ProductCart.vue";
 export default {
   components: { ItemCart },
   props: {
