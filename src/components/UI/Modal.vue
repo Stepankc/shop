@@ -50,11 +50,37 @@ export default defineComponent({
 
   .modal-container {
     background: white;
-    padding: 20px;
-    border-radius: 8px;
     width: 400px;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
 
+    & h1 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    & input {
+      border-radius: 12px;
+      color: #1d1d1f;
+      letter-spacing: 0;
+      border: 1px solid #00000026;
+      width: 100%;
+      height: 48px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.25;
+      outline: none;
+      &:focus {
+        border-color: var(--primary-color);
+        outline: 1px solid;
+        outline-color: var(--primary-color);
+      }
+    }
     .modal-header {
       display: flex;
       justify-content: space-between;

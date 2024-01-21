@@ -4,7 +4,7 @@
     <router-view></router-view>
     <MyDrawer :isDrawerOpen="isDrawerOpen" @toggle-drawer="toggleDrawer" />
     <Modal v-model:show="dialogVisible">
-      <template #header> Создание товара </template>
+      <template #header> <h1>Создание товара</h1> </template>
       <div class="create-product">
         <CreateItem v-model="product" />
       </div>
@@ -65,7 +65,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 * {
   margin: 0;
   padding: 0;
@@ -73,4 +73,6 @@ export default {
   text-decoration: none;
   color: inherit;
 }
+
+
 </style>

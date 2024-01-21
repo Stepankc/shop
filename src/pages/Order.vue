@@ -52,7 +52,7 @@ import { DatePicker } from "v-calendar";
 export default {
   data() {
     return {
-      deliveryDate: null,
+      deliveryDate: null as null | Date,
       masks: {
         input: "DD.MM.YYYY",
       },
@@ -162,7 +162,7 @@ export default {
       height: 48px;
       padding: 16px;
       font-size: 16px;
-      font-weight: 400;
+      font-weight: 600;
       line-height: 1.25;
       cursor: pointer;
       opacity: 0.9;

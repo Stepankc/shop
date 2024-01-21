@@ -57,4 +57,23 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+input {
+  border-radius: 12px;
+  color: #1d1d1f;
+  letter-spacing: 0;
+  border: 1px solid #00000026;
+  width: 100%;
+  height: 48px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  outline: none;
+  &:focus {
+    border-color: var(--primary-color);
+    outline: 1px solid;
+    outline-color: var(--primary-color);
+  }
+}
+</style>

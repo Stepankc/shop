@@ -19,11 +19,10 @@ export default {
 
 <style lang="scss" scoped>
 .container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
   margin-top: 16px;
   margin-bottom: 128px;
-  display: grid;
-  grid-template-columns: repeat(4, 18%);
-  justify-content: center;
-  gap: 20px;
 }
 </style>

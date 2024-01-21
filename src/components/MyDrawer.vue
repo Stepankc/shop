@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="right-drawer" :style="{ width: isDrawerOpen ? '25vw' : '0' }">
+    <div class="right-drawer" :style="{ width: isDrawerOpen ? '500px' : '0' }">
       <div class="wrapper">
         <div class="drawer-header">
           <div class="cart">Корзина</div>
@@ -19,7 +19,6 @@
 
           <button
             :disabled="$store.state.cart.length === 0"
-            class="confirm-buy"
             @click="goToCart"
           >
             Перейти к оформлению заказа
@@ -139,5 +138,33 @@ export default {
   opacity: 0.3;
   z-index: 199;
   transition: opacity 0.2s;
+}
+
+button {
+  background: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 12px;
+  color: #fff;
+  letter-spacing: 0;
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  opacity: 0.9;
+
+  &:not(:disabled) {
+    &:hover {
+      opacity: 1;
+    }
+    cursor: pointer;
+  }
+
+  &:disabled {
+    opacity: 1;
+    background: white;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+  }
 }
 </style>
