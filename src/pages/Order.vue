@@ -104,6 +104,7 @@ export default {
   }
   > div:nth-child(1) {
     grid-column: span 7 / span 7;
+    margin-bottom: 32px;
   }
   > div:nth-child(2) {
     grid-column: span 5 / span 5;

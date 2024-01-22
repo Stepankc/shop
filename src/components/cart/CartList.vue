@@ -22,6 +22,7 @@ export default {
 .container {
   display: grid;
   grid-auto-flow: row;
-  gap: 20px;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 </style>

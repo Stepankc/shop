@@ -82,7 +82,11 @@ ul {
     color: white;
     background: #ff0000;
     font-size: 12px;
-    padding: 2px 5px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 20px;
     font-weight: 600;
   }

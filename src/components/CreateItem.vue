@@ -4,12 +4,12 @@
       v-model="product.title"
       type="text"
       class="input"
-      placeholder="название"
+      placeholder="Название товара"
     />
     <textarea
       v-model="product.description"
       class="input"
-      placeholder="описание"
+      placeholder="Описание товара"
       rows="3"
     />
     <input
@@ -17,13 +17,13 @@
       type="number"
       class="input"
       min="0"
-      placeholder="цена"
+      placeholder="Цена"
     />
     <input
       v-model="product.image"
       type="text"
       class="input"
-      placeholder="картинка"
+      placeholder="Ссылка на фото"
     />
   </form>
 </template>

@@ -42,12 +42,15 @@ export default {
 <style lang="scss" scoped>
 .card {
   display: flex;
-  border: 2px solid rgba(112, 128, 144, 0.436);
   border-radius: 12px;
   padding: 4px;
   align-items: stretch;
   width: 100%;
-  gap: 15px;
+  gap: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 1px 3px #0000001a,
+    0 1px 2px -1px #0000001a;
   padding: 10px;
   align-items: center;
 
